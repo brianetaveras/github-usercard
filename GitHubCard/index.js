@@ -66,8 +66,8 @@ let cardMaker = (data)=>{
   name.textContent = data.name
   username.textContent = data.login
   location.textContent = data.location
-  profileLink.href =  data.url
-  profileLink.textContent = data.url
+  profileLink.href =  data.html_url
+  profileLink.textContent = data.html_url
   profile.textContent = `Profile: `
   followers.textContent = `Followers: ${data.followers}`
   following.textContent = `Following: ${data.following}`
