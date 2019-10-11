@@ -4,6 +4,16 @@
 */
 
 axios.get('https://api.github.com/users/brianetaveras').then(response=>{
+  const cards = document.querySelector('.cards')
+  cards.append(cardMaker(response.data))
+
+  axios.get(response.data.followers_url).then(res=>{
+    res.data.forEach(el=>{
+      axios.get('https://api.github.com/users' + el.login).then(res=>{
+        cards.append(cardMaker(res.data))
+      })
+    })
+  })
   
 })
 
@@ -29,7 +39,7 @@ axios.get('https://api.github.com/users/brianetaveras').then(response=>{
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['Humphreyj', 'andrewogle', 'hutchcrowley', 'aTechNewbie38', 'Franzferdinan51' ];
 
 
 let cardMaker = (data)=>{
