@@ -8,9 +8,11 @@ axios.get('https://api.github.com/users/brianetaveras').then(response=>{
   cards.append(cardMaker(response.data))
 
   axios.get(response.data.followers_url).then(res=>{
+    console.log(res.data)
     res.data.forEach(el=>{
-      axios.get('https://api.github.com/users' + el.login).then(res=>{
+      axios.get('https://api.github.com/users/' + el.login).then(res=>{
         cards.append(cardMaker(res.data))
+
       })
     })
   })
